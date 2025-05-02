@@ -5,7 +5,12 @@ import plotly.express as px
 # Configuração da página
 st.set_page_config(
     page_title="Evolução da Temperatura Global", layout="centered")
-st.title("🌍 Evolução das Anomalias de Temperatura (1850 - 2024)")
+st.title("🌍 Evolução das Anomalias de Temperatura (1900 - 2024)")
+
+# Texto explicativo opcional com caixa expandível
+with st.expander("A temperatura média global está subindo — mas quanto, onde e com que consequências?"):
+    st.markdown("""
+**  Apesar de sabermos que o planeta está esquentando, muitas pessoas ainda não têm a real dimensão do problema ou não sabem como esse aumento se comporta ao longo do tempo e em diferentes regiões. Como conversar com as pessoas sobre o tema?""")
 
 # Carregar os dados
 df = pd.read_csv("berkeley_temperature_cleaned.csv")
@@ -48,6 +53,10 @@ df_filtered = df_filtered.dropna(subset=[col_anomalia])
 # GRÁFICO PRINCIPAL DE LINHA
 # ============================
 st.subheader(f"Gráfico de Linha: Anomalia de Temperatura ({tipo_media})")
+# Texto explicativo opcional com caixa expandível
+with st.expander("A temperatura média global está subindo — mas quanto, onde e com que consequências?"):
+    st.markdown("""
+**  Apesar de sabermos que o planeta está esquentando, muitas pessoas ainda não têm a real dimensão do problema ou não sabem como esse aumento se comporta ao longo do tempo e em diferentes regiões. Como conversar com as pessoas sobre o tema?""")
 
 fig_line = px.line(
     df_filtered,
